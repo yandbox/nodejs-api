@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-api",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Ivan Yan",
+  "license": "MIT",
+  "private": true,
+  "main": "main.js",
+  "repository": "yanxyz/nodejs-api",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.1",
+    "got": "^7.0.0",
+    "mkdirp": "^0.5.1",
+    "p-map": "^1.1.1"
+  }
+}
