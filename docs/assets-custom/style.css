@@ -1,0 +1,33 @@
+ol.version-picker {
+  z-index: 1;
+}
+
+.mark {
+  outline: none;
+}
+
+.to-toc {
+  right: 1em !important;
+}
+
+#search {
+  position: relative;
+  margin: 10px 15px 0 15px;
+}
+
+#search-input {
+  padding: 5px 15px 5px 5px;
+  width: 170px;
+}
+
+#search-list {
+  display: none;
+}
+
+.searching #nav-list {
+  display: none;
+}
+
+.searching #search-list {
+  display: block;
+}
