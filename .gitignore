@@ -1,5 +1,5 @@
-docs/*.html
-assets/
+/docs/*.html
+/docs/assets/
 
 node_modules
 package-lock.json

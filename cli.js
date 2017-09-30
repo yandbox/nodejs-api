@@ -1,41 +1,80 @@
 #!/usr/bin/env node
 
-const name = process.argv[2]
-if (!name || ['-h', '--help'].includes(name)) {
-  console.log(`
-node cli.js all
-fetch all pages
+const argv = require('yargs-parser')(process.argv.slice(2), {
+  alias: {
+    help: ['h']
+  },
+  boolean: ['help']
+})
 
-node cli.js index.html
-fetch index.html
-
-node cli.js idx
-generate index
-`)
-  process.exit()
+const firstArg = argv._[0]
+if (argv.help || !firstArg) {
+  showHelp()
 }
 
-const ora = require('ora')
 const page = require('./lib/page')
+const help = require('./lib/help')
 
-run(name)
+main(firstArg)
 
-function run(name) {
-  if (name === 'idx') {
+function main(item) {
+  if (item === 'help') {
+    const topic = argv._[1]
+    if (!topic) {
+      console.error('Please specify a doc name.')
+      return
+    }
+    help(topic)
+    return
+  }
+
+  if (item === 'idx') {
     page.createIndex()
     return
   }
 
-  if (name === 'all') {
-    const spinner = ora('Fetching').start()
-    page.fetchAll().then(() => { spinner.stop() })
+  if (item === 'get') {
+    const name = argv._[1]
+    if (!name) {
+      console.error('Please specify a name, e.g. get all or get fs.html')
+      return
+    }
+
+    if (name === 'all') {
+      const ora = require('ora')
+      const spinner = ora('Fetching').start()
+      page.fetchAll().then(() => { spinner.stop() })
+      return
+    }
+
+    if (name === 'index.html') {
+      page.fetchIndex()
+      return
+    }
+
+    if (name.endsWith('.html')) {
+      page.fetch(name)
+      return
+    }
+
+    console.error('Invalid name, name should be "all" or end with ".html"')
     return
   }
 
-  if (name === 'index.html') {
-    page.fetchIndex()
-    return
-  }
+  console.error('Unknown argument')
+}
 
-  page.fetch(name)
+function showHelp() {
+  const cmd = 'napi'
+  console.log(`
+${cmd} get <all|name>
+Download page, e.g. '${cmd} get fs.html'
+
+${cmd} idx
+Generate index
+
+${cmd} help <doc>
+Open the specified doc, e.g. '${cmd} help fs'
+`)
+  process.exit()
 }
