@@ -1,0 +1,7 @@
+/public/*
+!/public/assets-custom
+*.db
+
+node_modules
+package-lock.json
+yarn.lock
