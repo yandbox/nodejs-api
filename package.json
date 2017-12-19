@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-api",
+  "version": "1.0.0",
+  "description": "Download Node.js API docs.",
+  "author": "Ivan Yan",
+  "license": "MIT",
+  "private": true,
+  "repository": "yanxyz/nodejs-api",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "cheerio": "^1.0.0-rc.2",
+    "fs-extra": "^5.0.0",
+    "got": "^8.0.1",
+    "level": "^2.1.1",
+    "p-map": "^1.2.0"
+  }
+}
