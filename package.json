@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-docs",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Ivan Yan",
+  "license": "MIT",
+  "private": true,
+  "repository": "yandbox/nodejs-docs",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "cheerio": "^1.0.0-rc.2",
+    "fs-extra": "^5.0.0",
+    "got": "^8.0.1",
+    "level": "^3.0.0",
+    "p-map": "^1.2.0"
+  }
+}
